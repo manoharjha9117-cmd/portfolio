@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manohar Jha | Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      z-index: 100;
+    }
+
+    header h1 {
+      font-weight: 700;
+      color: #a855f7;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #a855f7;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 8rem 5% 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    #home h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      z-index: 2;
+      position: relative;
+    }
+
+    #home span {
+      color: #a855f7;
+    }
+
+    #home p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #aaa;
+      z-index: 2;
+      position: relative;
+    }
+
+    .btn {
+      background: #a855f7;
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      z-index: 2;
+      position: relative;
+    }
+
+    .btn:hover {
+      background: #7c3aed;
+      transform: scale(1.05);
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: #a855f7;
+    }
+
+    .skills, .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #aaa;
+      background: #111;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -2;
+    }
+
+    #threejs-container {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+    }
+
+    /* Cursor for typing animation */
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      background-color: #a855f7;
+      margin-left: 2px;
+      animation: blink 0.7s infinite;
+      vertical-align: bottom;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <header>
+    <h1>Manohar Jha</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="home" data-aos="fade-up">
+    <h2>Hello, I'm <span id="typed-text">Manohar Jha</span><span class="cursor">|</span></h2>
+    <p>B.Tech CSE Student at Parul University, Vadodara</p>
+    <a href="#contact" class="btn">Hire Me</a>
+    <div id="threejs-container"></div>
+  </section>
+
+  <section id="about" data-aos="fade-up">
+    <h2 class="section-title">About Me</h2>
+    <p style="max-width: 700px;">I am a passionate developer who loves to create interactive and visually appealing web experiences. I enjoy learning new technologies and exploring creative ways to bring ideas to life through code.</p>
+  </section>
+
+  <section id="skills" data-aos="fade-up">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills">
+      <div class="card">HTML & CSS</div>
+      <div class="card">JavaScript</div>
+      <div class="card">React.js</div>
+      <div class="card">Node.js</div>
+      <div class="card">C / C++</div>
+      <div class="card">UI/UX Design</div>
+    </div>
+  </section>
+
+  <section id="projects" data-aos="fade-up">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Personal Portfolio</h3>
+        <p>A responsive portfolio website showcasing my skills, experience, and projects.</p>
+      </div>
+      <div class="card">
+        <h3>3D Interactive Model</h3>
+        <p>A 3D web application created using Three.js for real-time interactions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" data-aos="fade-up">
+    <h2 class="section-title">Contact</h2>
+    <p>Let's connect! Reach me at:</p>
+    <p><b>Email:</b> manoharjha9117@gmail.com</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Manohar Jha | Designed with ❤️</p>
+  </footer>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80 },
+        color: { value: "#a855f7" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 3 },
+        line_linked: { enable: true, color: "#a855f7" },
+        move: { enable: true, speed: 2 }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+
+  <!-- Three.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+
+  <!-- Custom 3D Octagon + Neon Trail -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      const container = document.getElementById("threejs-container");
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      container.appendChild(renderer.domElement);
+
+      const geometry = new THREE.CylinderGeometry(1, 1, 2, 8, 1, true);
+      const edges = new THREE.EdgesGeometry(geometry);
+      const material = new THREE.LineBasicMaterial({ color: 0xa855f7, linewidth: 2 });
+      const octagon = new THREE.LineSegments(edges, material);
+      scene.add(octagon);
+
+      const trailCount = 200;
+      const trailPositions = new Float32Array(trailCount * 3);
+      for (let i = 0; i < trailCount; i++) {
+        trailPositions[i * 3] = 0;
+        trailPositions[i * 3 + 1] = 0;
+        trailPositions[i * 3 + 2] = 0;
+      }
+      const trailGeometry = new THREE.BufferGeometry();
+      trailGeometry.setAttribute('position', new THREE.BufferAttribute(trailPositions, 3));
+      const trailMaterial = new THREE.PointsMaterial({ color: 0xa855f7, size: 0.05, transparent: true, opacity: 0.8 });
+      const trail = new THREE.Points(trailGeometry, trailMaterial);
+      scene.add(trail);
+
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+      scene.add(ambientLight);
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6);
+      directionalLight.position.set(5,5,5);
+      scene.add(directionalLight);
+
+      camera.position.z = 5;
+
+      let mouseX = 0, mouseY = 0;
+      document.addEventListener("mousemove", (e) => {
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+      });
+
+      const clock = new THREE.Clock();
+      function animate() {
+        requestAnimationFrame(animate);
+        const t = clock.getElapsedTime();
+        octagon.rotation.x = t * 0.3 + mouseY * 0.5;
+        octagon.rotation.y = t * 0.5 + mouseX * 0.5;
+        octagon.position.y = Math.sin(t) * 0.5;
+
+        for (let i = trailCount - 1; i > 0; i--) {
+          trailPositions[i * 3] = trailPositions[(i - 1) * 3];
+          trailPositions[i * 3 + 1] = trailPositions[(i - 1) * 3 + 1];
+          trailPositions[i * 3 + 2] = trailPositions[(i - 1) * 3 + 2];
+        }
+        trailPositions[0] = octagon.position.x;
+        trailPositions[1] = octagon.position.y;
+        trailPositions[2] = octagon.position.z;
+        trailGeometry.attributes.position.needsUpdate = true;
+
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    });
+  </script>
+
+  <!-- Typing Animation -->
+  <script>
+    const texts = ["Manohar Jha", "Web Developer", "Blockchain Developer"];
+    let count = 0;
+    let index = 0;
+    let currentText = '';
+    let isDeleting = false;
+    const speed = 120;
+    const pause = 1000;
+
+    function type() {
+      const fullText = texts[count];
+      if (isDeleting) {
+        currentText = fullText.substring(0, index--);
+      } else {
+        currentText = fullText.substring(0, index++);
+      }
+      document.getElementById('typed-text').textContent = currentText;
+
+      if (!isDeleting && index === fullText.length + 1) {
+        isDeleting = true;
+        setTimeout(type, pause);
+      } else if (isDeleting && index === 0) {
+        isDeleting = false;
+        count = (count + 1) % texts.length;
+        setTimeout(type, 300);
+      } else {
+        setTimeout(type, speed);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', type);
+  </script>
+
+</body>
+</html>
