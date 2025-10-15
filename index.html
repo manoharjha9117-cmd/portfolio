@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manohar Jha | Portfolio</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2920/2920342.png">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      overflow-x: hidden;
+      transition: all 0.5s ease;
+    }
+
+    body.day-mode {
+      background: #f8f4ff;
+      color: #1a1a1a;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.033) 95%, rgba(30, 1, 1, 0.219) 100%);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      z-index: 100;
+      transition: all 0.5s ease;
+    }
+
+    body.day-mode header {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 95%, rgba(200, 180, 255, 0.5) 100%);
+    }
+
+    header h1 {
+      font-weight: 700;
+      color: #a855f7;
+    }
+
+    body.day-mode header h1 {
+      color: #6b21a8;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    body.day-mode nav a {
+      color: #1a1a1a;
+    }
+
+    nav a:hover {
+      color: #a855f7;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 8rem 5% 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      transition: all 0.5s ease;
+    }
+
+    #home h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      z-index: 2;
+      position: relative;
+    }
+
+    #home span {
+      color: #a855f7;
+    }
+
+    body.day-mode #home span {
+      color: #facc15; /* yellow for day mode */
+    }
+
+    #home p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #aaa;
+      z-index: 2;
+      position: relative;
+    }
+
+    body.day-mode #home p {
+      color: #333;
+    }
+
+    .btn {
+      background: #a855f7;
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      z-index: 2;
+      position: relative;
+    }
+
+    .btn:hover {
+      background: #7c3aed;
+      transform: scale(1.05);
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: #a855f7;
+    }
+
+    body.day-mode .section-title {
+      color: #6b21a8;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1000px;
+    }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: 0.3s;
+    }
+
+    body.day-mode .card {
+      background: rgba(255, 255, 0, 0.05);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #aaa;
+      background: #111;
+      transition: all 0.5s ease;
+    }
+
+    body.day-mode footer {
+      background: #f0e7ff;
+      color: #1a1a1a;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -2;
+    }
+
+    #threejs-container {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+    }
+
+    /* Cursor for typing animation */
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      background-color: #a855f7;
+      margin-left: 2px;
+      animation: blink 0.7s infinite;
+      vertical-align: bottom;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+
+    /* Timeline styles for Experience section */
+    .timeline {
+      position: relative;
+      margin: 2rem auto;
+      padding-left: 2rem;
+      max-width: 700px;
+      border-left: 3px solid #a855f7;
+    }
+
+    body.day-mode .timeline {
+      border-left: 3px solid #6b21a8;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: flex-start;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -1.1rem;
+      top: 0.5rem;
+      width: 1rem;
+      height: 1rem;
+      background: #a855f7;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(168,85,247,0.15);
+    }
+    body.day-mode .timeline-dot {
+      background: #6b21a8;
+      box-shadow: 0 0 0 4px rgba(107,33,168,0.15);
+    }
+    .timeline-content {
+      background: rgba(255,255,255,0.04);
+      padding: 1.2rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      margin-left: 2rem;
+      min-width: 0;
+    }
+    body.day-mode .timeline-content {
+      background: rgba(200,180,255,0.1);
+    }
+    .timeline-content h3 {
+      margin: 0 0 0.3rem 0;
+      color: #a855f7;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    body.day-mode .timeline-content h3 {
+      color: #6b21a8;
+    }
+    .timeline-company {
+      display: block;
+      font-size: 0.95rem;
+      color: #aaa;
+      margin-bottom: 0.7rem;
+    }
+    body.day-mode .timeline-company {
+      color: #333;
+    }
+    .timeline-content p {
+      margin: 0;
+      color: #ddd;
+      font-size: 1rem;
+    }
+    body.day-mode .timeline-content p {
+      color: #222;
+    }
+
+    /* Switch Button */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 28px;
+      margin-left: 2rem;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #a855f7;
+      transition: .4s;
+      border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 22px;
+      width: 22px;
+      left: 3px;
+      bottom: 3px;
+      background-color: #fff;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    .switch input:checked + .slider {
+      background-color: #e9d5ff;
+    }
+    .switch input:checked + .slider:before {
+      transform: translateX(22px);
+      background-color: #a855f7;
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <header>
+    <h1>Manohar Jha</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <label class="switch">
+      <input type="checkbox" id="mode-toggle">
+      <span class="slider"></span>
+    </label>
+  </header>
+
+  <section id="home" data-aos="fade-up">
+    <h2>Hello, I'm <span id="typed-text">Manohar Jha</span><span class="cursor">|</span></h2>
+    <p>B.Tech CSE Student at Parul University, Vadodara</p>
+    <a href="#contact" class="btn">Hire Me</a>
+    <div id="threejs-container"></div>
+  </section>
+
+  <section id="about" data-aos="fade-up">
+    <h2 class="section-title">About Me</h2>
+    <p style="max-width: 700px;">I am a passionate developer who loves to create interactive and visually appealing web experiences. I enjoy learning new technologies and exploring creative ways to bring ideas to life through code.</p>
+  </section>
+
+  <section id="skills" data-aos="fade-up">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills">
+      <div class="card">HTML & CSS</div>
+      <div class="card">JavaScript</div>
+      <div class="card">React.js</div>
+      <div class="card">Node.js</div>
+      <div class="card">C / C++</div>
+      <div class="card">UI/UX Design</div>
+    </div>
+  </section>
+
+  <section id="experience" data-aos="fade-up">
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item" data-aos="zoom-in" data-aos-duration="900">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>Senior Cloud Developer</h3>
+          <span class="timeline-company">Cloud Solutions Inc. | 2023 - Present</span>
+          <p>Leading the development of scalable, serverless applications on AWS and driving the adoption of DevOps best practices.</p>
+        </div>
+      </div>
+      <div class="timeline-item" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="900">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>Web Developer</h3>
+          <span class="timeline-company">Creative Tech Agency | 2021 - 2023</span>
+          <p>Developed and maintained responsive websites and interactive web applications using modern frontend frameworks.</p>
+        </div>
+      </div>
+      <div class="timeline-item" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="900">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>Data Analyst Intern</h3>
+          <span class="timeline-company">Data Insights Co. | 2020 - 2021</span>
+          <p>Analyzed large datasets to extract actionable insights and created visualizations to communicate findings to stakeholders.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" data-aos="fade-up">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Personal Portfolio</h3>
+        <p>A responsive portfolio website showcasing my skills, experience, and projects.</p>
+      </div>
+      <div class="card">
+        <h3>3D Interactive Model</h3>
+        <p>A 3D web application created using Three.js for real-time interactions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications" data-aos="fade-up">
+    <h2 class="section-title">Certifications</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Google AI Fundamentals</h3>
+        <p>Coming soon...</p>
+      </div>
+      <div class="card">
+        <h3>Blockchain Developer Certification</h3>
+        <p>Coming soon...</p>
+      </div>
+      <div class="card">
+        <h3>Full Stack Web Development</h3>
+        <p>Coming soon...</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" data-aos="fade-up">
+    <h2 class="section-title">Contact</h2>
+    <p>Let's connect! Reach me at:</p>
+    <p><b>Email:</b> manoharjha9117@gmail.com</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Manohar Jha | Designed with ❤️</p>
+  </footer>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // Day/Night switch
+    const modeToggle = document.getElementById('mode-toggle');
+    const octaSphereMaterial = { normal: 0xa855f7, day: 0xfacc15 }; // Purple / Yellow
+
+    modeToggle.addEventListener('change', () => {
+      document.body.classList.toggle('day-mode', modeToggle.checked);
+      if (octaSphere) octaSphere.material.color.setHex(modeToggle.checked ? octaSphereMaterial.day : octaSphereMaterial.normal);
+    });
+  </script>
+
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80 },
+        color: { value: "#a855f7" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 3 },
+        line_linked: { enable: true, color: "#a855f7" },
+        move: { enable: true, speed: 2 }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+
+  <!-- Three.js ES Module - Octagonal Sphere -->
+  <script type="module">
+    import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js";
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    const container = document.getElementById("threejs-container");
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
+
+    // Geometry & Material
+    const geometry = new THREE.SphereGeometry(2.5, 22, 22);
+    const edges = new THREE.EdgesGeometry(geometry);
+    const material = new THREE.LineBasicMaterial({ color: 0xa855f7 });
+    const octaSphere = new THREE.LineSegments(edges, material);
+    scene.add(octaSphere);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+    scene.add(ambientLight);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
+
+    camera.position.z = 5;
+
+    let mouseX = 0;
+    document.addEventListener("mousemove", (e) => {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+    });
+
+    const clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+      octaSphere.rotation.x = 0;
+      octaSphere.rotation.y = t * 0.5 + mouseX * 0.8;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Expose octaSphere for day/night toggle
+    window.octaSphere = octaSphere;
+  </script>
+
+  <!-- Typing Animation -->
+  <script>
+    const texts = ["Manohar Jha", "Web Developer", "Blockchain Developer"];
+    let count = 0;
+    let index = 0;
+    let currentText = '';
+    let isDeleting = false;
+    const speed = 120;
+    const pause = 1000;
+
+    function type() {
+      const fullText = texts[count];
+      if (isDeleting) {
+        currentText = fullText.substring(0, index--);
+      } else {
+        currentText = fullText.substring(0, index++);
+      }
+      document.getElementById('typed-text').textContent = currentText;
+
+      if (!isDeleting && index === fullText.length + 1) {
+        isDeleting = true;
+        setTimeout(type, pause);
+      } else if (isDeleting && index === 0) {
+        isDeleting = false;
+        count = (count + 1) % texts.length;
+        setTimeout(type, 300);
+      } else {
+        setTimeout(type, speed);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', type);
+  </script>
+
+</body>
+</html>
